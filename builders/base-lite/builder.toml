@@ -34,13 +34,13 @@ uri = "../../extensions/kerberos-libkrb5-dev"
 
 # Order used for detection (extensions)
 [[order-extensions]]
-[[order-extensions.group]]
-id = "samples/curl"
-version = "0.0.1"
+    [[order-extensions.group]]
+        id = "samples/curl"
+        version = "0.0.1"
 
-[[order-extensions.group]]
-id = "samples/libkrb5-dev"
-version = "0.0.1"
+    [[order-extensions.group]]
+        id = "samples/libkrb5-dev"
+        version = "0.0.1"
 
 # Order used for detection (buildpacks)
 [[order]]
@@ -60,7 +60,7 @@ version = "0.0.1"
         version = "3.0.1"
         optional = true
 
-        [[order.group]]
+    [[order.group]]
         id = "samples/hello-extensions"
         version = "0.0.1"
         optional = true
@@ -71,14 +71,15 @@ version = "0.0.1"
         version = "3.0.0"
         optional = true
 
-        [[order.group]]
+    [[order.group]]
         id = "samples/hello-extensions"
         version = "0.0.1"
         optional = true
 
 # Base images used to create the builder
 [build]
-image = "tanzu-build.packages.broadcom.com/tanzu-base-ubuntu-2204-stack/build:0.1.114"
+    image = "tanzu-build.packages.broadcom.com/tanzu-base-ubuntu-2204-stack/build:0.1.114"
+
 [run]
-[[run.images]]
-image = "tanzu-build.packages.broadcom.com/tanzu-base-ubuntu-2204-stack/run:0.1.114"
+    [[run.images]]
+        image = "tanzu-build.packages.broadcom.com/tanzu-base-ubuntu-2204-stack/run:0.1.114"
