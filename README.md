@@ -4,7 +4,7 @@
     --config $PWD/builders/base-lite/builder.toml \
     --publish
 * ```shell
-    pack build test-extension  --env BP_JVM_VERSION=17 \                                               1m 3s ▼ 14:12:04
+    pack build test-extension  --env BP_JVM_VERSION=17 \
   --builder custom-extended-builde \
   --env BP_EXT_DEMO=1 \
   --env BP_REQUIRES=curl \
