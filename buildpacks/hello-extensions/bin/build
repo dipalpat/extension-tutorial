@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+echo "---> Hello Extensions Buildpack"
+
+# vim --version
+
+# layers_dir=$1
+
+# cat >> "${layers_dir}/launch.toml" <<EOL
+# [[processes]]
+# type = "curl"
+# command = ["curl"]
+# args = ["--version"]
+# default = true
+
+# [[processes]]
+# type = "cowsay"
+# command = ["cowsay"]
+# args = ["MOOOO!"]
+# EOL

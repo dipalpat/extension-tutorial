@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+if [[ -z "${BP_EXT_DEMO}" ]]; then
+  exit 100
+fi
+
+# 1. GET ARGS
+plan_path=$2
+
+# 2. DECLARE DEPENDENCIES (OPTIONAL)
+
+if [[ "${BP_REQUIRES}" == *"vim"* ]]; then
+  cat >>"${plan_path}" <<EOL
+[[requires]]
+name = "vim"
+EOL
+fi
+
+if [[ "${BP_REQUIRES}" == *"curl"* ]]; then
+  cat >>"${plan_path}" <<EOL
+[[requires]]
+name = "curl"
+EOL
+fi
+
+if [[ "${BP_REQUIRES}" == *"libkrb5-dev"* ]]; then
+  cat >>"${plan_path}" <<EOL
+[[requires]]
+name = "libkrb5-dev"
+EOL
+fi

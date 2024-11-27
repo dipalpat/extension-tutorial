@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+# 1. GET ARGS
+output_dir=$CNB_OUTPUT_DIR
+
+# 2. GENERATE run.Dockerfile
+cat >>"${output_dir}/build.Dockerfile" <<EOL
+ARG base_image
+FROM \${base_image}
+
+USER root
+RUN apt update -y && apt install -y libgssapi-krb5-2 && apt install -y krb5-user && apt install -y libkrb5-dev && \
+rm -rf /var/lib/apt/lists/*
+RUN krb5-config --libs gssapi
+RUN ln /usr/lib/x86_64-linux-gnu/mit-krb5/libgssapi_krb5.so /usr/lib/libgssapi_krb5.so
+
+ARG user_id
+USER \${user_id}
+EOL

@@ -1,0 +1,84 @@
+# Buildpacks to include in builder
+[[buildpacks]]
+id = "tanzu-buildpacks/java-lite"
+version = "9.18.0"
+uri = "tanzu-build.packages.broadcom.com/tanzu-java-buildpack/java-lite:9.18.0"
+
+# Buildpacks to include in builder
+[[buildpacks]]
+id = "tanzu-buildpacks/python-lite"
+version = "3.0.0"
+uri = "tanzu-build.packages.broadcom.com/tanzu-python-buildpack/python-lite:3.0.0"
+
+# Buildpacks to include in builder
+[[buildpacks]]
+id = "tanzu-buildpacks/dotnet-core-lite"
+version = "3.0.1"
+uri = "tanzu-build.packages.broadcom.com/tanzu-dotnet-core-buildpack/dotnet-core-lite:3.0.1"
+
+[[buildpacks]]
+id = "samples/hello-extensions"
+version = "0.0.1"
+uri = "../../buildpacks/hello-extensions"
+
+# Extensions to include in builder
+[[extensions]]
+id = "samples/curl"
+version = "0.0.1"
+uri = "../../extensions/curl"
+
+[[extensions]]
+id = "samples/libkrb5-dev"
+version = "0.0.1"
+uri = "../../extensions/kerberos-libkrb5-dev"
+
+# Order used for detection (extensions)
+[[order-extensions]]
+[[order-extensions.group]]
+id = "samples/curl"
+version = "0.0.1"
+
+[[order-extensions.group]]
+id = "samples/libkrb5-dev"
+version = "0.0.1"
+
+# Order used for detection (buildpacks)
+[[order]]
+    [[order.group]]
+        id = "tanzu-buildpacks/java-lite"
+        version = "9.18.0"
+        optional = true
+
+    [[order.group]]
+        id = "samples/hello-extensions"
+        version = "0.0.1"
+        optional = true
+
+[[order]]
+    [[order.group]]
+        id = "tanzu-buildpacks/dotnet-core-lite"
+        version = "3.0.1"
+        optional = true
+
+        [[order.group]]
+        id = "samples/hello-extensions"
+        version = "0.0.1"
+        optional = true
+
+[[order]]
+    [[order.group]]
+        id = "tanzu-buildpacks/python-lite"
+        version = "3.0.0"
+        optional = true
+
+        [[order.group]]
+        id = "samples/hello-extensions"
+        version = "0.0.1"
+        optional = true
+
+# Base images used to create the builder
+[build]
+image = "tanzu-build.packages.broadcom.com/tanzu-base-ubuntu-2204-stack/build:0.1.114"
+[run]
+[[run.images]]
+image = "tanzu-build.packages.broadcom.com/tanzu-base-ubuntu-2204-stack/run:0.1.114"
